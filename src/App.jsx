@@ -44,7 +44,7 @@ const MODULES = [
     desc: "Scotland's most comprehensive guide to council apprenticeships. MyJobScotland mastery, language tests, STAR examples and a full case study bank.",
     tags: ["MyJobScotland", "Language test", "AI Coach"],
     color: "#6B21A8",
-    url: "https://tass-local-authority.vercel.app",
+    url: "https://tass-la-customer-service.vercel.app",
     highlights: ["Supporting statement guide", "20 language test questions", "8 real candidate stories"],
   },
   {
@@ -68,7 +68,7 @@ const MODULES = [
     desc: "Section-by-section CV guidance for school leavers, graduates and career changers. 4 complete example CVs, sector-specific tips, a guided builder and AI review.",
     tags: ["4 full CV examples", "Section builder", "AI CV Review"],
     color: "#1A6B3A",
-    url: "https://tass-cv.vercel.app",
+    url: "https://tass-cv-building.vercel.app",
     highlights: ["6 sectors covered", "Weak vs strong examples", "ATS keyword guidance"],
   },
   {
@@ -80,8 +80,32 @@ const MODULES = [
     desc: "Everything a parent or carer needs to support their young person through the apprenticeship process — without doing it for them. Includes a 6-week coaching programme.",
     tags: ["Myth busting", "Conversation scripts", "AI Coach"],
     color: "#0891B2",
-    url: "https://tass-parent.vercel.app",
+    url: "https://tass-parent-carer-guide.vercel.app",
     highlights: ["8 myths busted", "Scottish resources directory", "Rejection resilience guide"],
+  },
+  {
+    id: "earlyyears",
+    icon: "🌟",
+    title: "Early Years & Childcare",
+    subtitle: "ELC Modern Apprenticeships",
+    for: "Young people",
+    desc: "Scotland's dedicated preparation module for Early Learning and Childcare apprenticeships. Covers safeguarding, PVG, SSSC, MyJobScotland, GIRFEC and sector-specific interview questions.",
+    tags: ["Safeguarding & PVG", "SSSC registration", "AI Coach"],
+    color: "#BE185D",
+    url: "https://tass-earlyyears.vercel.app",
+    highlights: ["Scotland-specific ELC framework", "4 STAR examples for childcare", "8-session coaching programme"],
+  },
+  {
+    id: "digitalit",
+    icon: "💻",
+    title: "Digital & IT",
+    subtitle: "All 5 tech pathways",
+    for: "Young people",
+    desc: "Covers all five Digital Technology MA pathways — Software Development, Cyber Security, Data Analytics, IT Support and Infrastructure. Includes GitHub portfolio guidance and certification roadmap.",
+    tags: ["Technical basics", "GitHub portfolio", "AI Coach"],
+    color: "#1D4ED8",
+    url: "https://tass-digitaltech.vercel.app",
+    highlights: ["Certification roadmap", "13 technical Q&As", "Scotland's Graduate Apprenticeship"],
   },
 ];
 
@@ -504,7 +528,7 @@ export default function TASSLanding() {
             color: "rgba(255,255,255,0.72)", fontSize: "clamp(15px, 2.5vw, 18px)",
             lineHeight: 1.7, marginBottom: 36, maxWidth: 560, margin: "0 auto 36px",
           }}>
-            Six in-depth modules covering every stage of the Modern Apprenticeship journey — from CV to interview to offer. Built for young people aged 16–29 and the parents and carers who support them.
+            Eight in-depth modules covering every stage of the Modern Apprenticeship journey — from CV to interview to offer. Built for young people aged 16–29 and the parents and carers who support them.
           </p>
 
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -538,7 +562,7 @@ export default function TASSLanding() {
       {/* ── Stats bar ───────────────────────────────────────────────────────── */}
       <section style={{ background: `linear-gradient(90deg, ${NAVY}, #0F2554)`, padding: "40px 24px" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
-          <StatCounter value="6"   suffix="+"  label="Specialist modules" />
+          <StatCounter value="8"   suffix="+"  label="Specialist modules" />
           <StatCounter value="80"  suffix="+"  label="Scottish MA frameworks" />
           <StatCounter value="200" suffix="+"  label="Questions and examples" />
           <StatCounter value="32"  suffix=""   label="Scottish councils covered" />
@@ -748,7 +772,7 @@ export default function TASSLanding() {
               <span style={{ color: AMBER }}>Start securing.</span>
             </h2>
             <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, lineHeight: 1.7, marginBottom: 36 }}>
-              Six modules. Free. No sign-up. Built for Scotland.<br/>Open the module that is right for you and start today.
+              Eight modules. Free. No sign-up. Built for Scotland.<br/>Open the module that is right for you and start today.
             </p>
             <button onClick={() => document.getElementById("modules")?.scrollIntoView({ behavior: "smooth" })} style={{
               background: AMBER, border: "none", color: NAVY,
