@@ -674,7 +674,7 @@ export default function TASSLanding() {
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <p style={{ color: TEAL, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10 }}>The modules</p>
-              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Six modules. One system.</h2>
+              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Eight modules. One system.</h2>
               <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>Each module is a standalone tool. Use one, or combine them — they are designed to work together across your full application journey.</p>
             </div>
           </AnimatedSection>
