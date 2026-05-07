@@ -107,6 +107,18 @@ const MODULES = [
     url: "https://tass-digitaltech.vercel.app",
     highlights: ["Certification roadmap", "13 technical Q&As", "Scotland's Graduate Apprenticeship"],
   },
+  {
+    id: "graduate",
+    icon: "🎓",
+    title: "Graduate Apprenticeship",
+    subtitle: "Degree while you work",
+    for: "Young people & career changers",
+    desc: "Scotland's complete guide to Graduate Apprenticeships — all 15 frameworks, GA vs MA comparison, Am I Ready self-assessment, personal statement guidance, GA-level STAR examples and AI coach.",
+    tags: ["GA vs MA", "Am I Ready?", "AI Coach"],
+    color: "#B7860B",
+    url: "https://tass-graduate.vercel.app",
+    highlights: ["15 frameworks covered", "Interactive self-assessment", "6 GA-specific interview questions"],
+  },
 ];
 
 
@@ -528,7 +540,7 @@ export default function TASSLanding() {
             color: "rgba(255,255,255,0.72)", fontSize: "clamp(15px, 2.5vw, 18px)",
             lineHeight: 1.7, marginBottom: 36, maxWidth: 560, margin: "0 auto 36px",
           }}>
-            Eight in-depth modules covering every stage of the Modern Apprenticeship journey — from CV to interview to offer. Built for young people aged 16–29 and the parents and carers who support them.
+            Nine in-depth modules covering every stage of the Modern Apprenticeship journey — from CV to interview to offer. Built for young people aged 16–29 and the parents and carers who support them.
           </p>
 
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -562,7 +574,7 @@ export default function TASSLanding() {
       {/* ── Stats bar ───────────────────────────────────────────────────────── */}
       <section style={{ background: `linear-gradient(90deg, ${NAVY}, #0F2554)`, padding: "40px 24px" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
-          <StatCounter value="8"   suffix="+"  label="Specialist modules" />
+          <StatCounter value="9"   suffix="+"  label="Specialist modules" />
           <StatCounter value="80"  suffix="+"  label="Scottish MA frameworks" />
           <StatCounter value="200" suffix="+"  label="Questions and examples" />
           <StatCounter value="32"  suffix=""   label="Scottish councils covered" />
@@ -674,7 +686,7 @@ export default function TASSLanding() {
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <p style={{ color: TEAL, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10 }}>The modules</p>
-              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Eight modules. One system.</h2>
+              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Nine modules. One system.</h2>
               <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>Each module is a standalone tool. Use one, or combine them — they are designed to work together across your full application journey.</p>
             </div>
           </AnimatedSection>
@@ -772,7 +784,7 @@ export default function TASSLanding() {
               <span style={{ color: AMBER }}>Start securing.</span>
             </h2>
             <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, lineHeight: 1.7, marginBottom: 36 }}>
-              Eight modules. Free. No sign-up. Built for Scotland.<br/>Open the module that is right for you and start today.
+              Nine modules. Free. No sign-up. Built for Scotland.<br/>Open the module that is right for you and start today.
             </p>
             <button onClick={() => document.getElementById("modules")?.scrollIntoView({ behavior: "smooth" })} style={{
               background: AMBER, border: "none", color: NAVY,
