@@ -17,8 +17,8 @@ const MODULES = [
     title: "Engineering",
     subtitle: "Modern Apprenticeships",
     for: "Young people",
-    desc: "7 in-depth modules covering sector knowledge, CV and application, test preparation, assessment centres, interview journeys and a scored knowledge check.",
-    tags: ["Technical questions", "STAR method", "AI Coach"],
+    desc: "12 in-depth modules covering all 10 engineering pathways, Scottish employers, technical knowledge, recruitment cycles, MyJobScotland, CV, STAR examples, interview prep and AI coach.",
+    tags: ["10 pathways", "Scottish employers", "AI Coach"],
     color: TEAL,
     url: "https://tass-engineering.vercel.app",
     highlights: ["40 multiple choice questions", "Sector landscape & safety", "Career progression pathways"],
@@ -38,10 +38,10 @@ const MODULES = [
   {
     id: "localauthority",
     icon: "🏛️",
-    title: "Local Authority",
-    subtitle: "Council apprenticeships",
+    title: "Local Authority Customer Service",
+    subtitle: "Council customer-facing roles",
     for: "Young people",
-    desc: "Scotland's most comprehensive guide to council apprenticeships. MyJobScotland mastery, language tests, STAR examples and a full case study bank.",
+    desc: "Scotland's dedicated guide to Local Authority Customer Service apprenticeships — council contact centres, housing, benefits, planning and public-facing roles. MyJobScotland mastery, language tests and STAR examples.",
     tags: ["MyJobScotland", "Language test", "AI Coach"],
     color: "#6B21A8",
     url: "https://tass-la-customer-service.vercel.app",
@@ -106,6 +106,66 @@ const MODULES = [
     color: "#1D4ED8",
     url: "https://tass-digitaltech.vercel.app",
     highlights: ["Certification roadmap", "13 technical Q&As", "Scotland's Graduate Apprenticeship"],
+  },
+  {
+    id: "graduate",
+    icon: "🎓",
+    title: "Graduate Apprenticeship",
+    subtitle: "Degree while you work",
+    for: "Young people & career changers",
+    desc: "Scotland's complete guide to Graduate Apprenticeships — all 15 frameworks, GA vs MA comparison, Am I Ready self-assessment, personal statement guidance, GA-level STAR examples and AI coach.",
+    tags: ["GA vs MA", "Am I Ready?", "AI Coach"],
+    color: "#B7860B",
+    url: "https://tass-graduate.vercel.app",
+    highlights: ["15 frameworks covered", "Interactive self-assessment", "6 GA-specific interview questions"],
+  },
+  {
+    id: "hospitality",
+    icon: "🍽️",
+    title: "Hospitality & Culinary Arts",
+    subtitle: "Chef, front of house and more",
+    for: "Young people & career changers",
+    desc: "Scotland's dedicated preparation module for Hospitality and Culinary Arts MAs. Covers all pathways, 8 Scottish employers, HACCP and allergen knowledge, trial shift guidance, recruitment cycles and AI coach.",
+    tags: ["HACCP & allergens", "Trial shift prep", "AI Coach"],
+    color: "#BE185D",
+    url: "https://tass-hospitality.vercel.app",
+    highlights: ["8 Scottish employers", "Am I Ready? self-assessment", "14 allergens explained"],
+  },
+  {
+    id: "motorvehicle",
+    icon: "🚗",
+    title: "Motor Vehicle",
+    subtitle: "All 9 pathways including EV",
+    for: "Young people & career changers",
+    desc: "Scotland's dedicated preparation module for Motor Vehicle MAs. Covers all 9 pathways, EV and hybrid technology, COSHH/LOLER/PUWER safety, Arnold Clark, Kwik Fit and more — with AI coach.",
+    tags: ["EV & hybrid", "Workshop safety", "AI Coach"],
+    color: "#DC2626",
+    url: "https://tass-motorvehicle.vercel.app",
+    highlights: ["Dedicated EV tab", "7 Scottish employers", "Am I Ready? self-assessment"],
+  },
+  {
+    id: "businessadmin",
+    icon: "💼",
+    title: "Business Administration",
+    subtitle: "Scotland's most versatile pathway",
+    for: "Young people & career changers",
+    desc: "Scotland's dedicated preparation module for Business Administration MAs at SCQF Levels 5, 6 and 8. Covers 6 sector pathways, digital skills, GDPR, 7 Scottish employers, MyJobScotland guidance and AI coach.",
+    tags: ["Digital skills", "GDPR", "AI Coach"],
+    color: "#4338CA",
+    url: "https://tass-businessadmin.vercel.app",
+    highlights: ["6 sector pathways", "Microsoft 365 and GDPR", "7 Scottish employers"],
+  },
+  {
+    id: "goldenrules",
+    icon: "🏅",
+    title: "Golden Rules",
+    subtitle: "Interview preparation masterclass",
+    for: "Everyone",
+    desc: "The 10 rules that separate prepared candidates from hopeful ones. Journey planning, dummy runs, company research, CV tailoring, phone etiquette, appearance, timing and follow-up — with an interactive interview readiness checklist.",
+    tags: ["Interview prep", "Checklist", "All sectors"],
+    color: "#B7860B",
+    url: "https://tass-goldenrules.vercel.app",
+    highlights: ["10 Golden Rules in depth", "Interactive readiness checklist", "Applies to every module"],
   },
 ];
 
@@ -528,7 +588,7 @@ export default function TASSLanding() {
             color: "rgba(255,255,255,0.72)", fontSize: "clamp(15px, 2.5vw, 18px)",
             lineHeight: 1.7, marginBottom: 36, maxWidth: 560, margin: "0 auto 36px",
           }}>
-            Eight in-depth modules covering every stage of the Modern Apprenticeship journey — from CV to interview to offer. Built for young people aged 16–29 and the parents and carers who support them.
+            Thirteen in-depth modules covering every stage of the Modern Apprenticeship journey — from CV to interview to offer. Built for young people aged 16–29 and the parents and carers who support them.
           </p>
 
           <div style={{ display: "flex", gap: 12, justifyContent: "center", flexWrap: "wrap" }}>
@@ -562,7 +622,7 @@ export default function TASSLanding() {
       {/* ── Stats bar ───────────────────────────────────────────────────────── */}
       <section style={{ background: `linear-gradient(90deg, ${NAVY}, #0F2554)`, padding: "40px 24px" }}>
         <div style={{ maxWidth: 800, margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(4, 1fr)", gap: 24 }}>
-          <StatCounter value="8"   suffix="+"  label="Specialist modules" />
+          <StatCounter value="13"  suffix="+"  label="Specialist modules" />
           <StatCounter value="80"  suffix="+"  label="Scottish MA frameworks" />
           <StatCounter value="200" suffix="+"  label="Questions and examples" />
           <StatCounter value="32"  suffix=""   label="Scottish councils covered" />
@@ -674,7 +734,7 @@ export default function TASSLanding() {
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <p style={{ color: TEAL, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10 }}>The modules</p>
-              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Six modules. One system.</h2>
+              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Thirteen modules. One system.</h2>
               <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>Each module is a standalone tool. Use one, or combine them — they are designed to work together across your full application journey.</p>
             </div>
           </AnimatedSection>
@@ -772,7 +832,7 @@ export default function TASSLanding() {
               <span style={{ color: AMBER }}>Start securing.</span>
             </h2>
             <p style={{ color: "rgba(255,255,255,0.65)", fontSize: 16, lineHeight: 1.7, marginBottom: 36 }}>
-              Eight modules. Free. No sign-up. Built for Scotland.<br/>Open the module that is right for you and start today.
+              Thirteen modules. Free. No sign-up. Built for Scotland.<br/>Open the module that is right for you and start today.
             </p>
             <button onClick={() => document.getElementById("modules")?.scrollIntoView({ behavior: "smooth" })} style={{
               background: AMBER, border: "none", color: NAVY,
