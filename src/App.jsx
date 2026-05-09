@@ -579,7 +579,6 @@ function ContactCard() {
   );
 }
 
-─────────────────────────
 export default function TASSLanding() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
