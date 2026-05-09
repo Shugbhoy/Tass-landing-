@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 // ── Brand ─────────────────────────────────────────────────────────────────────
 const NAVY  = "#0D1B3E";
 const TEAL  = "#1A9E8F";
+const INDIGO = "#4338CA";
 const AMBER = "#F4A623";
 const WHITE = "#FFFFFF";
 const GREY  = "#F0F4F8";
@@ -452,7 +453,132 @@ function FAQ() {
   );
 }
 
-// ── Main App ──────────────────────────────────────────────────────────────────
+// ── Main App ─────────────────────────────────────────
+function FeedbackCard() {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+  const [text, setText] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  async function submit() {
+    if (rating === 0) return;
+    setSubmitting(true);
+    // Tally form submission — replace FORM_ID with your Tally form ID
+    try {
+      await fetch("https://tally.so/r/44A24b", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ rating, feedback: text }),
+      });
+    } catch(e) { /* silent fail */ }
+    setSubmitted(true);
+    setSubmitting(false);
+  }
+
+  return (
+    <div style={{ background: "#fff", borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+      <div style={{ fontSize: 28, marginBottom: 8 }}>💬</div>
+      <h3 style={{ fontSize: 18, fontWeight: 900, color: NAVY, marginBottom: 8 }}>Share your feedback</h3>
+      <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, marginBottom: 20 }}>
+        How useful did you find the platform? Your feedback helps us improve.
+      </p>
+      {submitted ? (
+        <div style={{ background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 10, padding: 16, textAlign: "center" }}>
+          <div style={{ fontSize: 24, marginBottom: 6 }}>🙏</div>
+          <p style={{ color: "#166534", fontWeight: 700, fontSize: 15, margin: 0 }}>Thank you — your feedback means a lot.</p>
+        </div>
+      ) : (
+        <div>
+          <p style={{ fontSize: 13, fontWeight: 700, color: NAVY, marginBottom: 10, textTransform: "uppercase", letterSpacing: 0.5 }}>How would you rate TASS?</p>
+          <div style={{ display: "flex", gap: 6, marginBottom: 16 }}>
+            {[1,2,3,4,5].map(star => (
+              <button key={star} onClick={() => setRating(star)} onMouseEnter={() => setHover(star)} onMouseLeave={() => setHover(0)}
+                style={{ background: "none", border: "none", cursor: "pointer", fontSize: 28, padding: 2, transition: "transform 0.1s", transform: (hover || rating) >= star ? "scale(1.2)" : "scale(1)" }}>
+                {(hover || rating) >= star ? "⭐" : "☆"}
+              </button>
+            ))}
+          </div>
+          <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Tell us what you found most useful, or what we could improve..." rows={3}
+            style={{ width: "100%", border: "1px solid #E2E8F0", borderRadius: 10, padding: "10px 12px", fontSize: 13, fontFamily: "inherit", resize: "none", color: NAVY, boxSizing: "border-box", marginBottom: 12 }} />
+          <button onClick={submit} disabled={rating === 0 || submitting}
+            style={{ width: "100%", padding: "12px 0", background: rating > 0 ? TEAL : "#E2E8F0", color: rating > 0 ? "#fff" : "#999", border: "none", borderRadius: 10, fontWeight: 800, fontSize: 14, cursor: rating > 0 ? "pointer" : "default", fontFamily: "inherit" }}>
+            {submitting ? "Sending..." : "Send feedback"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ContactCard() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [type, setType] = useState("young_person");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+
+  async function submit() {
+    if (!email.trim() || !message.trim()) return;
+    setSubmitting(true);
+    try {
+      await fetch("https://tally.so/r/aQKB9E", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, email, type, message }),
+      });
+    } catch(e) { /* silent fail */ }
+    setSubmitted(true);
+    setSubmitting(false);
+  }
+
+  const types = [
+    { id: "young_person", label: "Young person" },
+    { id: "parent", label: "Parent or carer" },
+    { id: "school", label: "School or college" },
+    { id: "council", label: "Council or employer" },
+  ];
+
+  return (
+    <div style={{ background: "#fff", borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+      <div style={{ fontSize: 28, marginBottom: 8 }}>✉️</div>
+      <h3 style={{ fontSize: 18, fontWeight: 900, color: NAVY, marginBottom: 8 }}>Contact us</h3>
+      <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, marginBottom: 20 }}>
+        School or council? We would love to talk about bringing TASS to your students. Or just get in touch with a question.
+      </p>
+      {submitted ? (
+        <div style={{ background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 10, padding: 16, textAlign: "center" }}>
+          <div style={{ fontSize: 24, marginBottom: 6 }}>✅</div>
+          <p style={{ color: "#166534", fontWeight: 700, fontSize: 15, margin: "0 0 4px" }}>Message received.</p>
+          <p style={{ color: "#166534", fontSize: 13, margin: 0 }}>We will be in touch as soon as possible.</p>
+        </div>
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column", gap: 10 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 4 }}>
+            {types.map(t => (
+              <button key={t.id} onClick={() => setType(t.id)}
+                style={{ padding: "6px 12px", background: type === t.id ? NAVY : "#F0F4F8", color: type === t.id ? "#fff" : "#64748B", border: `1px solid ${type === t.id ? NAVY : "#E2E8F0"}`, borderRadius: 20, fontSize: 12, fontWeight: type === t.id ? 700 : 400, cursor: "pointer", fontFamily: "inherit" }}>
+                {t.label}
+              </button>
+            ))}
+          </div>
+          <input value={name} onChange={e => setName(e.target.value)} placeholder="Your name"
+            style={{ border: "1px solid #E2E8F0", borderRadius: 10, padding: "10px 12px", fontSize: 13, fontFamily: "inherit", color: NAVY, boxSizing: "border-box" }} />
+          <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Your email address" type="email"
+            style={{ border: "1px solid #E2E8F0", borderRadius: 10, padding: "10px 12px", fontSize: 13, fontFamily: "inherit", color: NAVY, boxSizing: "border-box" }} />
+          <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Your message..." rows={3}
+            style={{ border: "1px solid #E2E8F0", borderRadius: 10, padding: "10px 12px", fontSize: 13, fontFamily: "inherit", resize: "none", color: NAVY, boxSizing: "border-box" }} />
+          <button onClick={submit} disabled={!email.trim() || !message.trim() || submitting}
+            style={{ width: "100%", padding: "12px 0", background: email && message ? INDIGO : "#E2E8F0", color: email && message ? "#fff" : "#999", border: "none", borderRadius: 10, fontWeight: 800, fontSize: 14, cursor: email && message ? "pointer" : "default", fontFamily: "inherit" }}>
+            {submitting ? "Sending..." : "Send message"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function TASSLanding() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -833,6 +959,27 @@ export default function TASSLanding() {
             </button>
           </div>
         </AnimatedSection>
+      </section>
+
+      {/* ── Feedback and Contact ─────────────────────────────────────────────── */}
+      <section style={{ background: "#F0F4F8", padding: "56px 24px" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
+            <h2 style={{ fontSize: 28, fontWeight: 900, color: NAVY, marginBottom: 12 }}>Get in touch</h2>
+            <p style={{ fontSize: 16, color: "#64748B", lineHeight: 1.7, maxWidth: 560, margin: "0 auto" }}>
+              Whether you are a young person with a question, a parent looking for guidance, or a school or council interested in bringing TASS to your students — we want to hear from you.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+
+            {/* Feedback card */}
+            <FeedbackCard />
+
+            {/* Contact card */}
+            <ContactCard />
+
+          </div>
+        </div>
       </section>
 
       {/* ── Footer ──────────────────────────────────────────────────────────── */}
