@@ -459,14 +459,19 @@ function FeedbackCard() {
     <div style={{ background: "#fff", borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
       <div style={{ fontSize: 28, marginBottom: 8 }}>💬</div>
       <h3 style={{ fontSize: 18, fontWeight: 900, color: NAVY, marginBottom: 8 }}>Share your feedback</h3>
-      <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, marginBottom: 20 }}>
-        How useful did you find the platform? Your feedback helps us improve — it only takes 2 minutes.
+      <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, marginBottom: 16 }}>
+        How useful did you find the platform? Your feedback helps us improve.
       </p>
-      <a href="https://tally.so/r/44A24b" target="_blank" rel="noopener noreferrer"
-        style={{ display: "block", width: "100%", padding: "14px 0", background: TEAL, color: "#fff", borderRadius: 10, fontWeight: 800, fontSize: 15, textAlign: "center", textDecoration: "none", boxSizing: "border-box" }}>
-        Give feedback ↗
-      </a>
-      <p style={{ fontSize: 12, color: "#94A3B8", textAlign: "center", marginTop: 10, marginBottom: 0 }}>Opens in a new tab · Takes 2 minutes</p>
+      <iframe
+        src="https://tally.so/embed/44A24b?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        width="100%"
+        height="300"
+        frameBorder="0"
+        marginHeight="0"
+        marginWidth="0"
+        title="TASS Feedback"
+        style={{ border: "none" }}
+      />
     </div>
   );
 }
@@ -476,18 +481,19 @@ function ContactCard() {
     <div style={{ background: "#fff", borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
       <div style={{ fontSize: 28, marginBottom: 8 }}>✉️</div>
       <h3 style={{ fontSize: 18, fontWeight: 900, color: NAVY, marginBottom: 8 }}>Contact us</h3>
-      <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, marginBottom: 12 }}>
+      <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, marginBottom: 16 }}>
         School or council? We would love to talk about bringing TASS to your students. Or just get in touch with a question.
       </p>
-      <div style={{ background: "#EEF2FF", borderRadius: 10, padding: "12px 14px", marginBottom: 20 }}>
-        <p style={{ fontSize: 13, color: "#4338CA", fontWeight: 700, margin: "0 0 4px" }}>Are you a school, college or council?</p>
-        <p style={{ fontSize: 13, color: "#4338CA", margin: 0 }}>Get in touch about bringing TASS to your students — free, Scotland-specific and ready to use.</p>
-      </div>
-      <a href="https://tally.so/r/aQKB9E" target="_blank" rel="noopener noreferrer"
-        style={{ display: "block", width: "100%", padding: "14px 0", background: NAVY, color: "#fff", borderRadius: 10, fontWeight: 800, fontSize: 15, textAlign: "center", textDecoration: "none", boxSizing: "border-box" }}>
-        Get in touch ↗
-      </a>
-      <p style={{ fontSize: 12, color: "#94A3B8", textAlign: "center", marginTop: 10, marginBottom: 0 }}>Opens in a new tab · We respond within 48 hours</p>
+      <iframe
+        src="https://tally.so/embed/aQKB9E?alignLeft=1&hideTitle=1&transparentBackground=1&dynamicHeight=1"
+        width="100%"
+        height="420"
+        frameBorder="0"
+        marginHeight="0"
+        marginWidth="0"
+        title="TASS Contact"
+        style={{ border: "none" }}
+      />
     </div>
   );
 }
