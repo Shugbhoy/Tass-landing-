@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import { Analytics } from "@vercel/analytics/react";
 
 // ── Brand ─────────────────────────────────────────────────────────────────────
 const NAVY  = "#0D1B3E";
@@ -1001,6 +1002,7 @@ export default function TASSLanding() {
           © 2025 The Apprenticeship Success System™ · All content reflects Scotland's Modern Apprenticeship framework
         </p>
       </footer>
+      <Analytics />
     </div>
   );
 }
