@@ -75,10 +75,10 @@ const MODULES = [
   {
     id: "parent",
     icon: "🏠",
-    title: "Parent & Carer Guide",
-    subtitle: "Support without taking over",
-    for: "Parents & carers",
-    desc: "Everything a parent or carer needs to support their young person through the apprenticeship process — without doing it for them. Includes a 6-week coaching programme.",
+    title: "Parents, Carers and Teachers Guide",
+    subtitle: "Support and guidance for home and classroom",
+    for: "Parents, carers and teachers",
+    desc: "Everything parents, carers and teachers need to support a young person through the apprenticeship process. Includes a 6-week structured programme, conversation guides and a classroom-ready framework for teachers and guidance advisers.",
     tags: ["Myth busting", "Conversation scripts", "AI Coach"],
     color: "#0891B2",
     url: "https://tass-parent-carer-guide.vercel.app",
@@ -756,12 +756,12 @@ export default function TASSLanding() {
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <p style={{ color: TEAL, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10 }}>Who is TASS for?</p>
-              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Built for two audiences.<br/>Working as one system.</h2>
-              <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 520, margin: "0 auto" }}>Young people use the modules to prepare. Parents and carers use the Parent Guide to support without taking over. Both groups find exactly what they need.</p>
+              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Built for three audiences.<br/>Working as one system.</h2>
+              <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 520, margin: "0 auto" }}>Young people use the modules to prepare. Parents and carers use the Parent Guide to support without taking over. Teachers and guidance advisers use it to guide students through the process. Every audience finds exactly what they need.</p>
             </div>
           </AnimatedSection>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
             {[
               {
                 icon: "🎯", label: "Young people aged 16–29",
@@ -781,6 +781,16 @@ export default function TASSLanding() {
                   "Carers supporting a young person through the process",
                   "Families who want to understand the MA landscape",
                   "Anyone who needs to coach without taking over",
+                ],
+              },
+              {
+                icon: "🏫", label: "Teachers and guidance advisers",
+                color: "#4338CA",
+                points: [
+                  "Guidance teachers supporting post-school planning",
+                  "Classroom use — group discussions and structured homework",
+                  "Schools looking for a free, curriculum-ready MA resource",
+                  "Anyone helping a young person compete, not just apply",
                 ],
               },
             ].map((group, i) => (
@@ -818,7 +828,7 @@ export default function TASSLanding() {
               <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, letterSpacing: "-0.02em" }}>Open a module. Start preparing.</h2>
             </div>
           </AnimatedSection>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
             {[
               { num: "01", title: "Choose your module", desc: "Pick the module that matches your sector or situation. No account needed. No sign-up. Open it and go.", icon: "🎯" },
               { num: "02", title: "Work through the content", desc: "Guided section by section — knowledge, examples, questions, exercises. At your pace, on any device.", icon: "📚" },
