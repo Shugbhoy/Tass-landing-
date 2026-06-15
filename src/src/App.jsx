@@ -14,6 +14,7 @@ const MID   = "#64748B";
 const MODULES = [
   {
     id: "engineering",
+    gradientFrom: "#0A3D4A",
     icon: "⚙️",
     title: "Engineering",
     subtitle: "Modern Apprenticeships",
@@ -26,6 +27,7 @@ const MODULES = [
   },
   {
     id: "interview",
+    gradientFrom: "#92610A",
     icon: "🎤",
     title: "Interview Master",
     subtitle: "Universal preparation",
@@ -38,6 +40,7 @@ const MODULES = [
   },
   {
     id: "localauthority",
+    gradientFrom: "#3B0764",
     icon: "🏛️",
     title: "Local Authority Customer Service",
     subtitle: "Council customer-facing roles",
@@ -50,6 +53,7 @@ const MODULES = [
   },
   {
     id: "construction",
+    gradientFrom: "#7F1D1D",
     icon: "🏗️",
     title: "Construction & Trades",
     subtitle: "All 8 trades covered",
@@ -62,6 +66,7 @@ const MODULES = [
   },
   {
     id: "cv",
+    gradientFrom: "#14532D",
     icon: "📄",
     title: "CV Builder",
     subtitle: "Write it. Own it. Win it.",
@@ -74,11 +79,12 @@ const MODULES = [
   },
   {
     id: "parent",
+    gradientFrom: "#0C4A6E",
     icon: "🏠",
-    title: "Parent & Carer Guide",
-    subtitle: "Support without taking over",
-    for: "Parents & carers",
-    desc: "Everything a parent or carer needs to support their young person through the apprenticeship process — without doing it for them. Includes a 6-week coaching programme.",
+    title: "Parents, Carers and Teachers Guide",
+    subtitle: "Support and guidance for home and classroom",
+    for: "Parents, carers and teachers",
+    desc: "Everything parents, carers and teachers need to support a young person through the apprenticeship process. Includes a 6-week structured programme, conversation guides and a classroom-ready framework for teachers and guidance advisers.",
     tags: ["Myth busting", "Conversation scripts", "AI Coach"],
     color: "#0891B2",
     url: "https://tass-parent-carer-guide.vercel.app",
@@ -86,6 +92,7 @@ const MODULES = [
   },
   {
     id: "earlyyears",
+    gradientFrom: "#831843",
     icon: "🌟",
     title: "Early Years & Childcare",
     subtitle: "ELC Modern Apprenticeships",
@@ -98,6 +105,7 @@ const MODULES = [
   },
   {
     id: "digitalit",
+    gradientFrom: "#1E3A8A",
     icon: "💻",
     title: "Digital & IT",
     subtitle: "All 5 tech pathways",
@@ -110,6 +118,7 @@ const MODULES = [
   },
   {
     id: "graduate",
+    gradientFrom: "#78490A",
     icon: "🎓",
     title: "Graduate Apprenticeship",
     subtitle: "Degree while you work",
@@ -122,6 +131,7 @@ const MODULES = [
   },
   {
     id: "hospitality",
+    gradientFrom: "#881337",
     icon: "🍽️",
     title: "Hospitality & Culinary Arts",
     subtitle: "Chef, front of house and more",
@@ -134,6 +144,7 @@ const MODULES = [
   },
   {
     id: "motorvehicle",
+    gradientFrom: "#7F1D1D",
     icon: "🚗",
     title: "Motor Vehicle",
     subtitle: "All 9 pathways including EV",
@@ -146,6 +157,7 @@ const MODULES = [
   },
   {
     id: "businessadmin",
+    gradientFrom: "#312E81",
     icon: "💼",
     title: "Business Administration",
     subtitle: "Scotland's most versatile pathway",
@@ -226,6 +238,7 @@ function ModuleCard({ mod, index }) {
       opacity: inView ? 1 : 0,
       transform: inView ? "translateY(0)" : "translateY(32px)",
       transition: `opacity 0.55s ease ${index * 0.08}s, transform 0.55s ease ${index * 0.08}s`,
+      height: "100%",
     }}>
       <div
         onMouseEnter={() => setHovered(true)}
@@ -238,39 +251,57 @@ function ModuleCard({ mod, index }) {
           boxShadow: hovered ? `0 8px 32px ${mod.color}25` : "0 2px 8px rgba(0,0,0,0.06)",
           transition: "all 0.25s ease",
           transform: hovered ? "translateY(-3px)" : "translateY(0)",
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
         }}
       >
-        {/* Top accent */}
-        <div style={{ height: 4, background: `linear-gradient(90deg, ${mod.color}, ${mod.color}88)` }} />
+        {/* Gradient hero banner */}
+        <div style={{
+          background: `linear-gradient(135deg, ${mod.gradientFrom} 0%, ${mod.color} 100%)`,
+          height: 96,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 20px",
+          position: "relative",
+          overflow: "hidden",
+          flexShrink: 0,
+        }}>
+          {/* Background pattern */}
+          <div style={{
+            position: "absolute", inset: 0,
+            backgroundImage: "radial-gradient(circle at 20% 80%, rgba(255,255,255,0.12) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%)",
+          }}/>
+          {/* Icon */}
+          <span style={{ fontSize: 44, filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.25))", position: "relative", zIndex: 1 }}>{mod.icon}</span>
+          {/* For badge */}
+          <span style={{
+            background: "rgba(255,255,255,0.2)",
+            color: "#fff",
+            border: "1px solid rgba(255,255,255,0.3)",
+            borderRadius: 99,
+            padding: "4px 10px",
+            fontSize: 10,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
+            position: "relative",
+            zIndex: 1,
+            backdropFilter: "blur(4px)",
+          }}>{mod.for}</span>
+        </div>
 
-        <div style={{ padding: "20px 18px" }}>
-          {/* Header */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
-            <div>
-              <span style={{ fontSize: 28 }}>{mod.icon}</span>
-              <p style={{ color: NAVY, fontWeight: 900, fontSize: 17, margin: "6px 0 2px", lineHeight: 1.2 }}>{mod.title}</p>
-              <p style={{ color: MID, fontSize: 12, margin: 0 }}>{mod.subtitle}</p>
-            </div>
-            <span style={{
-              background: mod.color + "18",
-              color: mod.color,
-              border: `1px solid ${mod.color}30`,
-              borderRadius: 99,
-              padding: "4px 10px",
-              fontSize: 10,
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: 0.5,
-              flexShrink: 0,
-              marginTop: 4,
-            }}>{mod.for}</span>
-          </div>
+        <div style={{ padding: "16px 18px", display: "flex", flexDirection: "column", flex: 1 }}>
+          {/* Title */}
+          <p style={{ color: NAVY, fontWeight: 900, fontSize: 16, margin: "0 0 2px", lineHeight: 1.2 }}>{mod.title}</p>
+          <p style={{ color: MID, fontSize: 12, margin: "0 0 10px" }}>{mod.subtitle}</p>
 
           {/* Description */}
-          <p style={{ color: "#555", fontSize: 13, lineHeight: 1.65, margin: "0 0 14px" }}>{mod.desc}</p>
+          <p style={{ color: "#555", fontSize: 13, lineHeight: 1.65, margin: "0 0 12px" }}>{mod.desc}</p>
 
           {/* Highlights */}
-          <div style={{ marginBottom: 14 }}>
+          <div style={{ marginBottom: 12 }}>
             {mod.highlights.map((h, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
                 <div style={{ width: 5, height: 5, background: mod.color, borderRadius: 99, flexShrink: 0 }} />
@@ -280,7 +311,7 @@ function ModuleCard({ mod, index }) {
           </div>
 
           {/* Tags */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16, marginTop: "auto", paddingTop: 8 }}>
             {mod.tags.map((tag, i) => (
               <span key={i} style={{
                 background: GREY,
@@ -756,12 +787,12 @@ export default function TASSLanding() {
           <AnimatedSection>
             <div style={{ textAlign: "center", marginBottom: 48 }}>
               <p style={{ color: TEAL, fontWeight: 700, fontSize: 12, textTransform: "uppercase", letterSpacing: 1, marginBottom: 10 }}>Who is TASS for?</p>
-              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Built for two audiences.<br/>Working as one system.</h2>
-              <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 520, margin: "0 auto" }}>Young people use the modules to prepare. Parents and carers use the Parent Guide to support without taking over. Both groups find exactly what they need.</p>
+              <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, marginBottom: 14, letterSpacing: "-0.02em" }}>Built for three audiences.<br/>Working as one system.</h2>
+              <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 520, margin: "0 auto" }}>Young people use the modules to prepare. Parents and carers use the Parent Guide to support without taking over. Teachers and guidance advisers use it to guide students through the process. Every audience finds exactly what they need.</p>
             </div>
           </AnimatedSection>
 
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
             {[
               {
                 icon: "🎯", label: "Young people aged 16–29",
@@ -781,6 +812,16 @@ export default function TASSLanding() {
                   "Carers supporting a young person through the process",
                   "Families who want to understand the MA landscape",
                   "Anyone who needs to coach without taking over",
+                ],
+              },
+              {
+                icon: "🏫", label: "Teachers and guidance advisers",
+                color: "#4338CA",
+                points: [
+                  "Guidance teachers supporting post-school planning",
+                  "Classroom use — group discussions and structured homework",
+                  "Schools looking for a free, curriculum-ready MA resource",
+                  "Anyone helping a young person compete, not just apply",
                 ],
               },
             ].map((group, i) => (
@@ -818,7 +859,7 @@ export default function TASSLanding() {
               <h2 style={{ color: NAVY, fontSize: "clamp(22px, 4vw, 36px)", fontWeight: 900, letterSpacing: "-0.02em" }}>Open a module. Start preparing.</h2>
             </div>
           </AnimatedSection>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 16 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(240px, 1fr))", gap: 16 }}>
             {[
               { num: "01", title: "Choose your module", desc: "Pick the module that matches your sector or situation. No account needed. No sign-up. Open it and go.", icon: "🎯" },
               { num: "02", title: "Work through the content", desc: "Guided section by section — knowledge, examples, questions, exercises. At your pace, on any device.", icon: "📚" },
@@ -859,7 +900,7 @@ export default function TASSLanding() {
               <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>Each module is a standalone tool. Use one, or combine them — they are designed to work together across your full application journey.</p>
             </div>
           </AnimatedSection>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 18 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 18, alignItems: "stretch" }}>
             {MODULES.map((mod, i) => (
               <ModuleCard key={mod.id} mod={mod} index={i} />
             ))}
