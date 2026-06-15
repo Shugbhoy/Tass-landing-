@@ -115,7 +115,6 @@ const MODULES = [
     url: "https://tass-businessadmin.vercel.app",
     highlights: ["6 sector pathways", "Microsoft 365 and GDPR", "7 Scottish employers"],
   },
-];,
   {
     id: "earlyyears",
     gradientFrom: "#831843",
