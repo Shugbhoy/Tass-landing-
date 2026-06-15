@@ -14,6 +14,7 @@ const MID   = "#64748B";
 const MODULES = [
   {
     id: "engineering",
+    gradientFrom: "#0A3D4A",
     icon: "⚙️",
     title: "Engineering",
     subtitle: "Modern Apprenticeships",
@@ -26,6 +27,7 @@ const MODULES = [
   },
   {
     id: "interview",
+    gradientFrom: "#92610A",
     icon: "🎤",
     title: "Interview Master",
     subtitle: "Universal preparation",
@@ -38,6 +40,7 @@ const MODULES = [
   },
   {
     id: "localauthority",
+    gradientFrom: "#3B0764",
     icon: "🏛️",
     title: "Local Authority Customer Service",
     subtitle: "Council customer-facing roles",
@@ -50,6 +53,7 @@ const MODULES = [
   },
   {
     id: "construction",
+    gradientFrom: "#7F1D1D",
     icon: "🏗️",
     title: "Construction & Trades",
     subtitle: "All 8 trades covered",
@@ -62,6 +66,7 @@ const MODULES = [
   },
   {
     id: "cv",
+    gradientFrom: "#14532D",
     icon: "📄",
     title: "CV Builder",
     subtitle: "Write it. Own it. Win it.",
@@ -74,6 +79,7 @@ const MODULES = [
   },
   {
     id: "parent",
+    gradientFrom: "#0C4A6E",
     icon: "🏠",
     title: "Parents, Carers and Teachers Guide",
     subtitle: "Support and guidance for home and classroom",
@@ -86,6 +92,7 @@ const MODULES = [
   },
   {
     id: "earlyyears",
+    gradientFrom: "#831843",
     icon: "🌟",
     title: "Early Years & Childcare",
     subtitle: "ELC Modern Apprenticeships",
@@ -98,6 +105,7 @@ const MODULES = [
   },
   {
     id: "digitalit",
+    gradientFrom: "#1E3A8A",
     icon: "💻",
     title: "Digital & IT",
     subtitle: "All 5 tech pathways",
@@ -110,6 +118,7 @@ const MODULES = [
   },
   {
     id: "graduate",
+    gradientFrom: "#78490A",
     icon: "🎓",
     title: "Graduate Apprenticeship",
     subtitle: "Degree while you work",
@@ -122,6 +131,7 @@ const MODULES = [
   },
   {
     id: "hospitality",
+    gradientFrom: "#881337",
     icon: "🍽️",
     title: "Hospitality & Culinary Arts",
     subtitle: "Chef, front of house and more",
@@ -134,6 +144,7 @@ const MODULES = [
   },
   {
     id: "motorvehicle",
+    gradientFrom: "#7F1D1D",
     icon: "🚗",
     title: "Motor Vehicle",
     subtitle: "All 9 pathways including EV",
@@ -146,6 +157,7 @@ const MODULES = [
   },
   {
     id: "businessadmin",
+    gradientFrom: "#312E81",
     icon: "💼",
     title: "Business Administration",
     subtitle: "Scotland's most versatile pathway",
@@ -226,6 +238,7 @@ function ModuleCard({ mod, index }) {
       opacity: inView ? 1 : 0,
       transform: inView ? "translateY(0)" : "translateY(32px)",
       transition: `opacity 0.55s ease ${index * 0.08}s, transform 0.55s ease ${index * 0.08}s`,
+      height: "100%",
     }}>
       <div
         onMouseEnter={() => setHovered(true)}
@@ -243,37 +256,52 @@ function ModuleCard({ mod, index }) {
           height: "100%",
         }}
       >
-        {/* Top accent */}
-        <div style={{ height: 4, background: `linear-gradient(90deg, ${mod.color}, ${mod.color}88)` }} />
+        {/* Gradient hero banner */}
+        <div style={{
+          background: `linear-gradient(135deg, ${mod.gradientFrom} 0%, ${mod.color} 100%)`,
+          height: 96,
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "0 20px",
+          position: "relative",
+          overflow: "hidden",
+          flexShrink: 0,
+        }}>
+          {/* Background pattern */}
+          <div style={{
+            position: "absolute", inset: 0,
+            backgroundImage: "radial-gradient(circle at 20% 80%, rgba(255,255,255,0.12) 0%, transparent 50%), radial-gradient(circle at 80% 20%, rgba(255,255,255,0.08) 0%, transparent 50%)",
+          }}/>
+          {/* Icon */}
+          <span style={{ fontSize: 44, filter: "drop-shadow(0 4px 8px rgba(0,0,0,0.25))", position: "relative", zIndex: 1 }}>{mod.icon}</span>
+          {/* For badge */}
+          <span style={{
+            background: "rgba(255,255,255,0.2)",
+            color: "#fff",
+            border: "1px solid rgba(255,255,255,0.3)",
+            borderRadius: 99,
+            padding: "4px 10px",
+            fontSize: 10,
+            fontWeight: 700,
+            textTransform: "uppercase",
+            letterSpacing: 0.5,
+            position: "relative",
+            zIndex: 1,
+            backdropFilter: "blur(4px)",
+          }}>{mod.for}</span>
+        </div>
 
-        <div style={{ padding: "20px 18px", display: "flex", flexDirection: "column", flex: 1 }}>
-          {/* Header */}
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
-            <div>
-              <span style={{ fontSize: 28 }}>{mod.icon}</span>
-              <p style={{ color: NAVY, fontWeight: 900, fontSize: 17, margin: "6px 0 2px", lineHeight: 1.2 }}>{mod.title}</p>
-              <p style={{ color: MID, fontSize: 12, margin: 0 }}>{mod.subtitle}</p>
-            </div>
-            <span style={{
-              background: mod.color + "18",
-              color: mod.color,
-              border: `1px solid ${mod.color}30`,
-              borderRadius: 99,
-              padding: "4px 10px",
-              fontSize: 10,
-              fontWeight: 700,
-              textTransform: "uppercase",
-              letterSpacing: 0.5,
-              flexShrink: 0,
-              marginTop: 4,
-            }}>{mod.for}</span>
-          </div>
+        <div style={{ padding: "16px 18px", display: "flex", flexDirection: "column", flex: 1 }}>
+          {/* Title */}
+          <p style={{ color: NAVY, fontWeight: 900, fontSize: 16, margin: "0 0 2px", lineHeight: 1.2 }}>{mod.title}</p>
+          <p style={{ color: MID, fontSize: 12, margin: "0 0 10px" }}>{mod.subtitle}</p>
 
           {/* Description */}
-          <p style={{ color: "#555", fontSize: 13, lineHeight: 1.65, margin: "0 0 14px" }}>{mod.desc}</p>
+          <p style={{ color: "#555", fontSize: 13, lineHeight: 1.65, margin: "0 0 12px" }}>{mod.desc}</p>
 
           {/* Highlights */}
-          <div style={{ marginBottom: 14 }}>
+          <div style={{ marginBottom: 12 }}>
             {mod.highlights.map((h, i) => (
               <div key={i} style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 5 }}>
                 <div style={{ width: 5, height: 5, background: mod.color, borderRadius: 99, flexShrink: 0 }} />
