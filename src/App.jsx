@@ -238,12 +238,15 @@ function ModuleCard({ mod, index }) {
           boxShadow: hovered ? `0 8px 32px ${mod.color}25` : "0 2px 8px rgba(0,0,0,0.06)",
           transition: "all 0.25s ease",
           transform: hovered ? "translateY(-3px)" : "translateY(0)",
+          display: "flex",
+          flexDirection: "column",
+          height: "100%",
         }}
       >
         {/* Top accent */}
         <div style={{ height: 4, background: `linear-gradient(90deg, ${mod.color}, ${mod.color}88)` }} />
 
-        <div style={{ padding: "20px 18px" }}>
+        <div style={{ padding: "20px 18px", display: "flex", flexDirection: "column", flex: 1 }}>
           {/* Header */}
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 12 }}>
             <div>
@@ -280,7 +283,7 @@ function ModuleCard({ mod, index }) {
           </div>
 
           {/* Tags */}
-          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: 5, marginBottom: 16, marginTop: "auto", paddingTop: 8 }}>
             {mod.tags.map((tag, i) => (
               <span key={i} style={{
                 background: GREY,
@@ -869,7 +872,7 @@ export default function TASSLanding() {
               <p style={{ color: MID, fontSize: 15, lineHeight: 1.7, maxWidth: 500, margin: "0 auto" }}>Each module is a standalone tool. Use one, or combine them — they are designed to work together across your full application journey.</p>
             </div>
           </AnimatedSection>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 18 }}>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(280px, 1fr))", gap: 18, alignItems: "stretch" }}>
             {MODULES.map((mod, i) => (
               <ModuleCard key={mod.id} mod={mod} index={i} />
             ))}
