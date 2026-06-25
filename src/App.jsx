@@ -554,8 +554,20 @@ function ContactCard() {
           </div>
           <input value={name} onChange={e => setName(e.target.value)} placeholder="Your name" style={inputStyle} />
           <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Your email address" type="email" style={inputStyle} />
-          <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Your message..." rows={4}
-            style={{ ...inputStyle, resize: "none", lineHeight: 1.6, fontSize: 16 }} />
+          <textarea 
+            value={message} 
+            onChange={e => setMessage(e.target.value)} 
+            placeholder="Your message..."
+            rows={5}
+            style={{ 
+              ...inputStyle, 
+              resize: "none", 
+              lineHeight: 1.6, 
+              fontSize: 16,
+              minHeight: 120,
+              touchAction: "pan-y",
+              WebkitOverflowScrolling: "touch",
+            }} />
           {error && <p style={{ color: "#C0392B", fontSize: 13, margin: 0 }}>Something went wrong — please try again.</p>}
           <button onClick={submit} disabled={!email.trim() || !message.trim() || submitting}
             style={{ width: "100%", padding: "13px 0", background: email && message ? INDIGO : "#E2E8F0", color: email && message ? WHITE : "#999", border: "none", borderRadius: 10, fontWeight: 800, fontSize: 14, cursor: email && message ? "pointer" : "default", fontFamily: "inherit" }}>
@@ -585,6 +597,8 @@ export default function TASSLanding() {
   return (
     <div style={{ fontFamily: "'Segoe UI', system-ui, sans-serif", background: WHITE, color: NAVY, overflowX: "hidden" }}>
       <style>{`
+      input, textarea, select { font-size: 16px !important; -webkit-text-size-adjust: 100%; }
+      textarea { touch-action: pan-y !important; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 5px; }
@@ -960,7 +974,7 @@ export default function TASSLanding() {
       </section>
 
             {/* ── Contact and Feedback ─────────────────────────────────────────────── */}
-      <section style={{ background: "#F0F4F8", padding: "56px 24px", scrollMarginTop: 80 }}>
+      <section style={{ background: "#F0F4F8", padding: "56px 24px 80px", scrollMarginTop: 80, position: "relative" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <h2 style={{ fontSize: 28, fontWeight: 900, color: NAVY, marginBottom: 12 }}>Get in touch</h2>
