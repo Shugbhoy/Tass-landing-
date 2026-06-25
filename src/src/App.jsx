@@ -444,6 +444,129 @@ function FAQ() {
 }
 
 // ── Main App ──────────────────────────────────────────────────────────────────
+
+function FeedbackCard() {
+  const [rating, setRating] = useState(0);
+  const [hover, setHover] = useState(0);
+  const [text, setText] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
+
+  async function submit() {
+    if (rating === 0) return;
+    setSubmitting(true); setError(false);
+    try {
+      const res = await fetch("https://formspree.io/f/meenpnlk", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ rating, feedback: text, _subject: "TASS Feedback — " + rating + " stars" }),
+      });
+      if (res.ok) { setSubmitted(true); } else { setError(true); }
+    } catch(e) { setError(true); }
+    setSubmitting(false);
+  }
+
+  return (
+    <div style={{ background: WHITE, borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+      <div style={{ fontSize: 28, marginBottom: 8 }}>💬</div>
+      <h3 style={{ fontSize: 18, fontWeight: 900, color: NAVY, marginBottom: 8 }}>Share your feedback</h3>
+      <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, marginBottom: 20 }}>How useful did you find TASS? Your feedback helps us improve.</p>
+      {submitted ? (
+        <div style={{ background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 12, padding: 20, textAlign: "center" }}>
+          <div style={{ fontSize: 32, marginBottom: 8 }}>🙏</div>
+          <p style={{ color: "#166534", fontWeight: 700, fontSize: 15, margin: "0 0 4px" }}>Thank you — that means a lot.</p>
+          <p style={{ color: "#166534", fontSize: 13, margin: 0 }}>Your feedback helps us make TASS better for every young person in Scotland.</p>
+        </div>
+      ) : (
+        <div>
+          <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 10, textTransform: "uppercase", letterSpacing: 0.5 }}>How would you rate TASS?</p>
+          <div style={{ display: "flex", gap: 8, marginBottom: 18 }}>
+            {[1,2,3,4,5].map(star => (
+              <button key={star} onClick={() => setRating(star)} onMouseEnter={() => setHover(star)} onMouseLeave={() => setHover(0)}
+                style={{ background: "none", border: "none", cursor: "pointer", fontSize: 32, padding: 0, lineHeight: 1, transition: "transform 0.1s", transform: (hover || rating) >= star ? "scale(1.25)" : "scale(1)" }}>
+                {(hover || rating) >= star ? "⭐" : "☆"}
+              </button>
+            ))}
+          </div>
+          <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>What could we improve?</p>
+          <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Tell us what you found most useful, or what we could do better..." rows={4}
+            style={{ width: "100%", border: "1px solid #E2E8F0", borderRadius: 10, padding: "10px 12px", fontSize: 13, fontFamily: "inherit", resize: "none", color: NAVY, boxSizing: "border-box", marginBottom: 12, lineHeight: 1.6 }} />
+          {error && <p style={{ color: "#C0392B", fontSize: 13, marginBottom: 8 }}>Something went wrong — please try again.</p>}
+          <button onClick={submit} disabled={rating === 0 || submitting}
+            style={{ width: "100%", padding: "13px 0", background: rating > 0 ? TEAL : "#E2E8F0", color: rating > 0 ? WHITE : "#999", border: "none", borderRadius: 10, fontWeight: 800, fontSize: 14, cursor: rating > 0 ? "pointer" : "default", fontFamily: "inherit" }}>
+            {submitting ? "Sending..." : "Send feedback"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ContactCard() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [type, setType] = useState("Young person");
+  const [message, setMessage] = useState("");
+  const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
+  const [error, setError] = useState(false);
+  const types = ["Young person", "Parent or carer", "Teacher or adviser", "School or college", "Council or employer"];
+  const inputStyle = { width: "100%", border: "1px solid #E2E8F0", borderRadius: 10, padding: "11px 13px", fontSize: 13, fontFamily: "inherit", color: NAVY, boxSizing: "border-box", outline: "none" };
+
+  async function submit() {
+    if (!email.trim() || !message.trim()) return;
+    setSubmitting(true); setError(false);
+    try {
+      const res = await fetch("https://formspree.io/f/mykobode", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Accept": "application/json" },
+        body: JSON.stringify({ name, email, type, message, _subject: "TASS Contact — " + type }),
+      });
+      if (res.ok) { setSubmitted(true); } else { setError(true); }
+    } catch(e) { setError(true); }
+    setSubmitting(false);
+  }
+
+  return (
+    <div style={{ background: WHITE, borderRadius: 16, padding: 28, border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)" }}>
+      <div style={{ fontSize: 28, marginBottom: 8 }}>✉️</div>
+      <h3 style={{ fontSize: 18, fontWeight: 900, color: NAVY, marginBottom: 8 }}>Contact us</h3>
+      <p style={{ fontSize: 14, color: "#64748B", lineHeight: 1.6, marginBottom: 20 }}>School, council or teacher? We would love to talk about bringing TASS to your students. Or just get in touch with a question.</p>
+      {submitted ? (
+        <div style={{ background: "#F0FDF4", border: "1px solid #86EFAC", borderRadius: 12, padding: 20, textAlign: "center" }}>
+          <div style={{ fontSize: 32, marginBottom: 8 }}>✅</div>
+          <p style={{ color: "#166534", fontWeight: 700, fontSize: 15, margin: "0 0 4px" }}>Message received.</p>
+          <p style={{ color: "#166534", fontSize: 13, margin: 0 }}>We will be in touch within 48 hours.</p>
+        </div>
+      ) : (
+        <div style={{ display: "flex", flexDirection: "column", gap: 12 }}>
+          <div>
+            <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>I am a...</p>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: 6 }}>
+              {types.map(t => (
+                <button key={t} onClick={() => setType(t)}
+                  style={{ padding: "7px 14px", background: type === t ? NAVY : GREY, color: type === t ? WHITE : "#64748B", border: `1px solid ${type === t ? NAVY : "#E2E8F0"}`, borderRadius: 20, fontSize: 12, fontWeight: type === t ? 700 : 400, cursor: "pointer", fontFamily: "inherit" }}>
+                  {t}
+                </button>
+              ))}
+            </div>
+          </div>
+          <input value={name} onChange={e => setName(e.target.value)} placeholder="Your name" style={inputStyle} />
+          <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Your email address" type="email" style={inputStyle} />
+          <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Your message..." rows={4}
+            style={{ ...inputStyle, resize: "none", lineHeight: 1.6 }} />
+          {error && <p style={{ color: "#C0392B", fontSize: 13, margin: 0 }}>Something went wrong — please try again.</p>}
+          <button onClick={submit} disabled={!email.trim() || !message.trim() || submitting}
+            style={{ width: "100%", padding: "13px 0", background: email && message ? INDIGO : "#E2E8F0", color: email && message ? WHITE : "#999", border: "none", borderRadius: 10, fontWeight: 800, fontSize: 14, cursor: email && message ? "pointer" : "default", fontFamily: "inherit" }}>
+            {submitting ? "Sending..." : "Send message"}
+          </button>
+        </div>
+      )}
+    </div>
+  );
+}
+
 export default function TASSLanding() {
   const [navScrolled, setNavScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -834,6 +957,22 @@ export default function TASSLanding() {
             </button>
           </div>
         </AnimatedSection>
+      </section>
+
+            {/* ── Contact and Feedback ─────────────────────────────────────────────── */}
+      <section style={{ background: "#F0F4F8", padding: "56px 24px" }}>
+        <div style={{ maxWidth: 800, margin: "0 auto" }}>
+          <div style={{ textAlign: "center", marginBottom: 40 }}>
+            <h2 style={{ fontSize: 28, fontWeight: 900, color: NAVY, marginBottom: 12 }}>Get in touch</h2>
+            <p style={{ fontSize: 16, color: "#64748B", lineHeight: 1.7, maxWidth: 560, margin: "0 auto" }}>
+              Whether you are a young person with a question, a parent or teacher looking for guidance, or a school or council interested in bringing TASS to your students — we want to hear from you.
+            </p>
+          </div>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
+            <FeedbackCard />
+            <ContactCard />
+          </div>
+        </div>
       </section>
 
       {/* ── Footer ──────────────────────────────────────────────────────────── */}
