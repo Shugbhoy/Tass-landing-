@@ -491,7 +491,7 @@ function FeedbackCard() {
           </div>
           <p style={{ fontSize: 12, fontWeight: 700, color: "#64748B", marginBottom: 8, textTransform: "uppercase", letterSpacing: 0.5 }}>What could we improve?</p>
           <textarea value={text} onChange={e => setText(e.target.value)} placeholder="Tell us what you found most useful, or what we could do better..." rows={4}
-            style={{ width: "100%", border: "1px solid #E2E8F0", borderRadius: 10, padding: "10px 12px", fontSize: 13, fontFamily: "inherit", resize: "none", color: NAVY, boxSizing: "border-box", marginBottom: 12, lineHeight: 1.6 }} />
+            style={{ width: "100%", border: "1px solid #E2E8F0", borderRadius: 10, padding: "10px 12px", fontSize: 16, fontFamily: "inherit", resize: "none", color: NAVY, boxSizing: "border-box", marginBottom: 12, lineHeight: 1.6, WebkitAppearance: "none" }} />
           {error && <p style={{ color: "#C0392B", fontSize: 13, marginBottom: 8 }}>Something went wrong — please try again.</p>}
           <button onClick={submit} disabled={rating === 0 || submitting}
             style={{ width: "100%", padding: "13px 0", background: rating > 0 ? TEAL : "#E2E8F0", color: rating > 0 ? WHITE : "#999", border: "none", borderRadius: 10, fontWeight: 800, fontSize: 14, cursor: rating > 0 ? "pointer" : "default", fontFamily: "inherit" }}>
@@ -512,7 +512,7 @@ function ContactCard() {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState(false);
   const types = ["Young person", "Parent or carer", "Teacher or adviser", "School or college", "Council or employer"];
-  const inputStyle = { width: "100%", border: "1px solid #E2E8F0", borderRadius: 10, padding: "11px 13px", fontSize: 13, fontFamily: "inherit", color: NAVY, boxSizing: "border-box", outline: "none" };
+  const inputStyle = { width: "100%", border: "1px solid #E2E8F0", borderRadius: 10, padding: "11px 13px", fontSize: 16, fontFamily: "inherit", color: NAVY, boxSizing: "border-box", outline: "none", WebkitAppearance: "none" };
 
   async function submit() {
     if (!email.trim() || !message.trim()) return;
@@ -555,7 +555,7 @@ function ContactCard() {
           <input value={name} onChange={e => setName(e.target.value)} placeholder="Your name" style={inputStyle} />
           <input value={email} onChange={e => setEmail(e.target.value)} placeholder="Your email address" type="email" style={inputStyle} />
           <textarea value={message} onChange={e => setMessage(e.target.value)} placeholder="Your message..." rows={4}
-            style={{ ...inputStyle, resize: "none", lineHeight: 1.6 }} />
+            style={{ ...inputStyle, resize: "none", lineHeight: 1.6, fontSize: 16 }} />
           {error && <p style={{ color: "#C0392B", fontSize: 13, margin: 0 }}>Something went wrong — please try again.</p>}
           <button onClick={submit} disabled={!email.trim() || !message.trim() || submitting}
             style={{ width: "100%", padding: "13px 0", background: email && message ? INDIGO : "#E2E8F0", color: email && message ? WHITE : "#999", border: "none", borderRadius: 10, fontWeight: 800, fontSize: 14, cursor: email && message ? "pointer" : "default", fontFamily: "inherit" }}>
@@ -960,7 +960,7 @@ export default function TASSLanding() {
       </section>
 
             {/* ── Contact and Feedback ─────────────────────────────────────────────── */}
-      <section style={{ background: "#F0F4F8", padding: "56px 24px" }}>
+      <section style={{ background: "#F0F4F8", padding: "56px 24px", scrollMarginTop: 80 }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <h2 style={{ fontSize: 28, fontWeight: 900, color: NAVY, marginBottom: 12 }}>Get in touch</h2>
