@@ -924,21 +924,19 @@ export default function TASSLanding() {
           <p style={{ fontSize: 16, color: "#64748B", lineHeight: 1.7, maxWidth: 560, margin: "0 auto 40px" }}>
             Whether you are a young person with a question, a parent or teacher looking for guidance, or a school or council interested in bringing TASS to your students — we want to hear from you.
           </p>
-          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, maxWidth: 600, margin: "0 auto" }}>
-            <a href="https://tally.so/r/44A24b" target="_blank" rel="noopener noreferrer"
-              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, background: WHITE, borderRadius: 16, padding: "28px 24px", border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", textDecoration: "none" }}>
-              <span style={{ fontSize: 36 }}>💬</span>
-              <p style={{ color: NAVY, fontWeight: 900, fontSize: 17, margin: 0 }}>Share feedback</p>
-              <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: 0 }}>How useful did you find TASS? Your feedback helps us improve.</p>
-              <span style={{ background: TEAL, color: WHITE, borderRadius: 10, padding: "11px 24px", fontWeight: 800, fontSize: 14, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 4 }}>Give feedback ↗</span>
-            </a>
-            <a href="https://tally.so/r/aQKB9E" target="_blank" rel="noopener noreferrer"
-              style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: 12, background: WHITE, borderRadius: 16, padding: "28px 24px", border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", textDecoration: "none" }}>
-              <span style={{ fontSize: 36 }}>✉️</span>
-              <p style={{ color: NAVY, fontWeight: 900, fontSize: 17, margin: 0 }}>Contact us</p>
-              <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.6, margin: 0 }}>School, council or teacher? Get in touch about bringing TASS to your students.</p>
-              <span style={{ background: NAVY, color: WHITE, borderRadius: 10, padding: "11px 24px", fontWeight: 800, fontSize: 14, textTransform: "uppercase", letterSpacing: "0.05em", marginTop: 4 }}>Get in touch ↗</span>
-            </a>
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20, maxWidth: 600, margin: "0 auto", alignItems: "stretch" }}>
+            {[
+              { href: "https://tally.so/r/44A24b", icon: "💬", title: "Share feedback", desc: "How useful did you find TASS? Your feedback helps us improve.", label: "Give feedback ↗", bg: TEAL },
+              { href: "https://tally.so/r/aQKB9E", icon: "✉️", title: "Contact us", desc: "School, council or teacher? Get in touch about bringing TASS to your students.", label: "Get in touch ↗", bg: NAVY },
+            ].map((card, i) => (
+              <a key={i} href={card.href} target="_blank" rel="noopener noreferrer"
+                style={{ display: "flex", flexDirection: "column", alignItems: "center", textAlign: "center", gap: 0, background: WHITE, borderRadius: 16, padding: "32px 24px", border: "1px solid #E2E8F0", boxShadow: "0 2px 12px rgba(0,0,0,0.06)", textDecoration: "none" }}>
+                <span style={{ fontSize: 40, marginBottom: 14 }}>{card.icon}</span>
+                <p style={{ color: NAVY, fontWeight: 900, fontSize: 17, margin: "0 0 12px" }}>{card.title}</p>
+                <p style={{ color: "#64748B", fontSize: 14, lineHeight: 1.65, margin: "0 0 24px", flexGrow: 1, minHeight: 44 }}>{card.desc}</p>
+                <span style={{ background: card.bg, color: WHITE, borderRadius: 10, padding: "12px 28px", fontWeight: 800, fontSize: 14, textTransform: "uppercase", letterSpacing: "0.05em", width: "100%", display: "block", boxSizing: "border-box" }}>{card.label}</span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
