@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useCallback } from "react";
 
 // ── Brand ─────────────────────────────────────────────────────────────────────
 const NAVY  = "#0D1B3E";
@@ -227,7 +227,7 @@ function TASSLogo({ size = "md", theme = "light" }) {
 }
 
 // ── Module Card ───────────────────────────────────────────────────────────────
-function ModuleCard({ mod, index }) {
+const ModuleCard = React.memo(function ModuleCard({ mod, index }) {
   const ref = useRef(null);
   const inView = useInView(ref, 0.1);
   const [hovered, setHovered] = useState(false);
@@ -304,7 +304,7 @@ function ModuleCard({ mod, index }) {
       </div>
     </div>
   );
-}
+});
 
 // ── Stat counter ──────────────────────────────────────────────────────────────
 function StatCounter({ value, label, suffix = "" }) {
@@ -599,6 +599,8 @@ export default function TASSLanding() {
       <style>{`
       input, textarea, select { font-size: 16px !important; -webkit-text-size-adjust: 100%; }
       textarea { touch-action: pan-y !important; }
+      html { scroll-behavior: auto !important; }
+      * { -webkit-tap-highlight-color: transparent; }
         * { box-sizing: border-box; margin: 0; padding: 0; }
         html { scroll-behavior: smooth; }
         ::-webkit-scrollbar { width: 5px; }
@@ -974,7 +976,7 @@ export default function TASSLanding() {
       </section>
 
             {/* ── Contact and Feedback ─────────────────────────────────────────────── */}
-      <section style={{ background: "#F0F4F8", padding: "56px 24px 80px", scrollMarginTop: 80, position: "relative" }}>
+      <section style={{ background: "#F0F4F8", padding: "56px 24px 80px" }}>
         <div style={{ maxWidth: 800, margin: "0 auto" }}>
           <div style={{ textAlign: "center", marginBottom: 40 }}>
             <h2 style={{ fontSize: 28, fontWeight: 900, color: NAVY, marginBottom: 12 }}>Get in touch</h2>
